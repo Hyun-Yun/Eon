@@ -1,0 +1,91 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+
+int Push(struct Stack* pStack);
+int Pop(struct Stack* pStack);
+int Show(struct Stack* pStack);
+
+struct Stack
+{
+	int data[10];
+	int k;
+};
+
+
+
+int main(void)
+{
+	
+	int num;
+	struct Stack A = { 0,0 };
+
+
+	printf("==========메뉴==========\n");
+
+	printf("PUSH : 1\n");
+	printf("POP  : 2\n");
+	printf("SHOW : 3\n");
+	printf("(종료하려면 1,2,3 이외의 숫자 입력)\n\n");
+	while (1)
+	{
+
+		printf("메뉴를 선택하세요 : ");
+		scanf("%d", &num);
+
+		if (num == 1 || num == 2 || num == 3)
+		{
+			switch (num)
+			{
+
+			case 1:
+			{
+				Push(&A);
+			}
+			break;
+			case 2:
+			{
+				Pop(&A);
+			}
+			break;
+
+			case 3:
+				Show(&A);
+				break;
+			}
+		}
+		else
+		{
+			printf("==========프로그램 종료==========\n");
+			break;
+		}
+
+	}
+	return 0;
+}
+
+
+int Push(struct Stack* pStack) 
+{
+	int iValue;
+	printf("수 입력 : ");
+	scanf("%d", &iValue);
+	pStack->data[pStack->k] = iValue;
+	pStack->k++;
+}
+
+int Pop(struct Stack* pStack) 
+{
+	pStack->k--;
+	pStack->data[pStack->k] = 0;			
+}
+
+int Show(struct Stack* pStack)
+{
+	int n;
+	n = pStack-> k;
+	for (int i = 1; i <= n; i++) 
+	{	
+			printf("%d ", pStack->data[i-1]);
+	}
+	printf("\n");
+}
