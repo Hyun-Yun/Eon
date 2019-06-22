@@ -1,0 +1,40 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+
+
+int main() 
+{
+	int length, x =0;
+	char Moon[100];
+	length = strlen(Moon);
+	char* test = (char*)malloc(length +1);
+
+	printf("문자열 입력 : ");
+	scanf("%s", Moon);
+
+	strcpy(test, Moon);
+
+	for (int i = 0; i < length / 2; i++) 
+	{
+		if (test[i] != test[length - i -1])
+		{
+			x++;
+			break;
+		}
+	}
+	
+	if (x == 0) 
+	{
+		printf("\n회문입니다.\n");
+	}
+	else
+	{
+		printf("\n회문이 아닙니다.\n");
+	}
+
+	free(test);
+	free(Moon);
+
+	return 0;
+}
+
